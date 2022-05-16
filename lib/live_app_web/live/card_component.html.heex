@@ -1,0 +1,24 @@
+<div>
+<div class="card">
+  <h3>
+    <%= if @answered do %>
+      <%= if @correct do %>
+          <%= LiveAppWeb.CardHandler.greet(%{question: @card.question, answer: @card.answer}) %>
+      <% else %>
+          <%= LiveAppWeb.CardHandler.warn(%{question: @card.question, answer: @card.answer}) %>
+      <% end %>
+    <% else %>
+    <%= @card.question %>
+    <%= form_for :question, "#", [phx_submit: :answer, phx_target: @myself], fn f -> %>
+    <%= text_input f, :answer %>
+    <%= hidden_input f, :id, value: @card.id%>
+    <%= submit "Submit" %>
+
+    <% end %>
+  <% end %>
+  </h3>
+</div>
+<%= if @answered do %>
+<%= link "Next", to: "#", phx_target: @myself, phx_click: "new" %>
+<% end %>
+</div>

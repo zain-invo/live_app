@@ -19,6 +19,13 @@ defmodule LiveAppWeb.Router do
 
     get "/", PageController, :index
     live "/sample", SampleLive, :index
+    live "/cards", CardLive.Index, :index
+    live "/cards/new", CardLive.Index, :new
+    live "/cards/:id/edit", CardLive.Index, :edit
+
+    live "/cards/:id", CardLive.Show, :show
+    live "/cards/:id/show/edit", CardLive.Show, :edit
+    live "/game", GameLive, :index
   end
 
   # Other scopes may use custom stacks.

@@ -1,0 +1,10 @@
+<div>Correct Answers: <%= @correct_answers %></div>
+<div>Wrong Answers: <%= @wrong_answers %></div>
+<div>Total Answers: <%= @total_answers %></div>
+
+<div>
+<%= for card <- @cards do %>
+    <.live_component module={LiveAppWeb.CardComponent}
+        id={card.id} />
+<% end %>
+</div>
